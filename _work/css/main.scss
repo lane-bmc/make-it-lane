@@ -1,0 +1,493 @@
+/*
+  Make It Lane - CSS
+*/
+
+@import 'normalize';
+@import 'fonts';
+
+/* DEFAULT VARIABLES */
+
+/* Colours */
+$var-color-black:#000000; 
+$var-color-yellow:#FFF200;
+$var-color-dark-yellow:#A89B00;
+$var-color-red:#ED1C24;
+
+
+/* Shortened code for transitions */
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+/* Shortened code for transforms */
+@mixin transform($transform...) {
+    -webkit-transform: $transform;
+    transform:         $transform;
+}
+
+/* Shortened code for the dark borders on the bottom of links */
+@mixin link-border-bottom() {
+  color:$var-color-red;
+  border-bottom:0.15em solid rgba(153, 43, 31, 1);
+}
+
+
+
+
+/* GENERAL RULES */
+
+*, *::before, *::after { /* Apply the border-box model */
+  box-sizing:border-box;
+}
+
+body {
+  font-family: 'LFT Etica', Arial, sans-serif;
+  font-size:1.25em;
+  color:$var-color-black;
+  background-color:$var-color-yellow;
+  padding-bottom:0;
+  margin-top:1.3em;
+}
+
+.wrapper { /* Wrap this around content if it should max at a certain length and not reach the edges of the window */
+  max-width:76em;
+  margin:0 auto;
+  padding:0 2em;
+}
+
+img { /* All images should be at max width and shrink down if larger than the screen width */
+  max-width:100%;
+  height:auto;
+}
+
+/* Selection - make the highlighted text white and the background orange */
+
+::-moz-selection { /* Code for Firefox */
+    color:white;
+    background:$var-color-red;
+}
+
+::selection {
+    color:white; 
+    background:$var-color-red;
+}
+
+
+figure { /* By default, remove margins on figures */
+  margin:0;
+}
+
+/* GENERAL RULES */
+
+
+
+
+
+
+
+
+
+
+/* MAIN NAVIGATION */
+
+nav {
+  padding:1em 0;
+  border-bottom: 0.1em solid $var-color-black;
+  position:relative;
+
+    &:after { /* Clear the floats underneath the navigation bar */
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    ul { /* The ul houses the Home, Games, and About links */
+      margin:0;
+      text-align:right;
+      padding: 0;   
+      position:absolute;
+      bottom:0;
+      right:0;
+    }
+
+    li {
+      list-style-type:none;
+      text-transform:uppercase;
+      font-size:0.85em;
+      font-family:'LFT Etica Semibold', Arial, sans-serif;
+      margin:0 0 0.5em 0;
+
+      a {
+        color: $var-color-black;
+        padding:0.15em 0.3em;
+        border-bottom:none;
+      }
+
+      a:focus, a:hover, a.nav-link-current { /* The .nav-link-current class identifies the active page, so that viewers can see which page they're on by looking at the navigation bar */
+        color: $var-color-yellow;
+        background-color: $var-color-red;
+        border-bottom:none;
+      }
+
+      a.nav-link-current {
+        font-family: 'LFT Etica bold', Arial, sans-serif;
+      }
+    }
+
+    img { /* The logo image in the nav bar */
+      float:left;
+      margin:0;
+      opacity:1;
+      @include transition(opacity 0.3s ease-out);
+    }
+
+    img:hover, img:focus { /* Have the logo image become translucent on hover*/
+      opacity:0.5;
+      @include transition(opacity 0.3s ease-out);
+    }
+
+}
+
+/* MAIN NAVIGATION */
+
+
+
+
+
+
+
+
+
+
+
+
+/* TEXT ELEMENTS */
+
+/* Headings */
+
+h1 {
+  font-size:1.75em;
+  margin:0;
+  font-family: 'LFT Etica Bold', Arial, sans-serif;
+  color:$var-color-black;
+
+  &::after {
+    color:$var-color-black;
+    content:"\A \2014";
+    white-space:pre-wrap;
+  }
+
+  #highlight {
+    color:$var-color-red;
+  }
+}
+
+h2 {
+  font-family: 'LFT Etica Semibold', Arial, sans-serif;
+  font-size:0.9em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color:$var-color-black;
+}
+
+h3 {
+  font-family: 'LFT Etica Semibold', Arial, sans-serif;
+  font-size:0.9em;
+  margin-bottom: 0;
+  color:$var-color-black;
+}
+
+h4 {
+  text-transform:uppercase;
+  font-size:0.8em;
+  font-family: 'LFT Etica Semibold', Arial, sans-serif;
+  margin-bottom: 0;
+  color:$var-color-black;
+}
+
+/* Paragraphs */
+p, ul, ol {
+  margin:0 0 1em 0;
+  font-size:0.5em;
+  line-height:1.5em;
+}
+
+p.strong {
+  font-family:'LFT Etica Bold', Arial, sans-serif;
+}
+
+/* TEXT ELEMENTS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INTERACTIVE ELEMENTS */
+
+/* Styling for the buttons */
+.button {
+  margin:0 auto;
+  width:7.5;
+  padding: 0.5em 0.75em;
+  color: $var-color-yellow;
+  background-color: $var-color-red;
+  text-decoration: none;
+  text-transform:uppercase;
+  font-family:'LFT Etica Bold', Arial, sans-serif;
+  border-bottom:none;
+  @include transition(all 0.1s ease-out);
+
+    &:hover, &:focus {
+      background-color: $var-color-dark-yellow;
+      color:$var-color-yellow;
+      border-bottom:none;
+    }
+
+}
+
+/* Styling for the link */
+a {
+  color:$var-color-red;
+  border-bottom:0.15em solid rgba(153, 43, 31, 0);
+  text-decoration:none;
+  @include transition(all 0.3s ease-out);
+
+    &:hover, &:focus {
+      @include link-border-bottom();
+      @include transition(all 0.3s ease-out);
+    }
+
+}
+
+/* INTERACTIVE ELEMENTS */
+
+
+
+
+
+/* SECTIONS */
+
+footer {
+  background-color: $var-color-dark-yellow;
+  font-family: 'LFT Etica', Arial, sans-serif;
+}
+
+
+
+
+
+/* GRID SYSTEM */
+
+.container {
+
+  &::after { /* Clears the floats after a grid row */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+[class*='col-'] { /* By default (mobile-first) columns are stacked */
+  margin:0.5em 0;
+  width:100%;
+}
+
+/* GRID SYSTEM */  
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media (min-width:35em) { /* Media queries which take place once the screen is 35em or larger */
+
+  h1 {
+    font-size:1.5em;
+  }
+
+  h2 {
+    font-size:1.75em;
+  }
+
+  h3 {
+    font-size:1.1em;
+    margin-bottom:0.3em;
+  }
+
+  h4 {
+    font-size:0.9em;
+  }
+
+  p, ul, ol {
+    font-size:1em;
+  }
+
+  .project-image p {
+    font-size:0.8em;
+  }
+
+  nav ul li {
+    display:inline-block;
+    margin-left:1.5em;
+  }
+
+  .section-style-guide section, .section-project-details section:not(:last-of-type) {
+    padding-bottom:3.5em;
+  }
+
+  header {
+    padding-bottom:1.5em;
+  }
+
+  footer {
+    margin-top:3.5em;
+  }
+
+  .img-profile {
+    padding:0 4.5em;
+  }
+
+  footer p {
+    font-size:0.8em;
+  }
+
+}
+
+
+
+
+
+
+@media (min-width:40em) { /* Media queries which take place once the screen is 40em or larger */
+
+  blockquote {
+    font-size: 1.5em;
+    padding: 0.25em 3em;
+  }
+
+  blockquote:before {
+    font-size: 4em;
+  }
+
+  cite {
+    font-size:0.65em;
+  }
+
+  .container { /* Regular grids used for layout */
+    margin-left:-0.5em;
+    margin-right:-0.5em;
+  }
+
+  [class*='col-'] { /* Remove outside margins */
+    padding:0 0.5em;
+    float:left;
+  }
+
+  .col-1of2-sm {
+    width:50%;
+  }
+
+  .mobile-switch {
+    float:right;
+    text-align:right;
+  }
+
+  .project-preview .project-info {
+    left:0.5em;
+    right:0.5em;
+  }
+
+  .contact-list-footer {
+    text-align:right;
+
+    a {
+      color:$var-color-black;
+      border-bottom: 0.15em solid rgba(0,0,0,0);
+
+      &:hover, &:focus {
+        border-bottom: 0.15em solid rgba(0,0,0,1);
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+
+
+@media (min-width:56.25em) { /* Media queries which take place once the screen is 56.25em or larger */
+
+  h1 {
+    font-size:2.5em;
+    line-height:1em;
+  }
+
+  .col-1of3 {
+    width:33.33%; /* At a certain screen size, make the columns 33% and 66% */
+  }
+
+  .col-2of3 {
+    width:66.66%;
+  }
+
+  .col-1of4 {
+    width:25%;
+  }
+
+  .col-3of4 {
+    width:75%;
+  }
+
+  .col-1of2 {
+    width:50%;
+  }
+
+  .section-style-guide section, .section-project-details section:not(:last-of-type) {
+    padding-bottom:5em;
+  }
+
+  section.section-contact, footer {
+    margin-top:5em;
+  }
+
+  .img-profile {
+    padding:0;
+  }
+
+  h3 {
+    margin-top:0;
+  }
+
+}
+
+
+
+
+
+
+@media (min-width:60em) { /* Media queries which take place once the screen is 60em or larger */
+  .colour-block {
+    width:20%;
+    float:left;
+  }
+}
+
+/* MEDIA QUERIES */
