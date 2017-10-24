@@ -61,15 +61,15 @@ img { /* All images should be at max width and shrink down if larger than the sc
   height:auto;
 }
 
-/* Selection - make the highlighted text white and the background orange */
+/* Selection - make the highlighted text yellow and the background red */
 
 ::-moz-selection { /* Code for Firefox */
-    color:white;
+    color:$var-color-yellow;
     background:$var-color-red;
 }
 
 ::selection {
-    color:white; 
+    color:$var-color-yellow; 
     background:$var-color-red;
 }
 
@@ -94,40 +94,37 @@ figure { /* By default, remove margins on figures */
 nav {
   padding:1em 0;
   border-bottom: 0.1em solid $var-color-black;
-  position:relative;
-
-    &:after { /* Clear the floats underneath the navigation bar */
-      content: "";
-      display: table;
-      clear: both;
-    }
 
     ul { /* The ul houses the Home, Games, and About links */
       margin:0;
-      text-align:right;
-      padding: 0;   
-      position:absolute;
-      bottom:0;
-      right:0;
+      text-align:center;
+      padding: 2.2em 0 0 0;   
+    }
+
+    a {
+      border-bottom:none;
+    }
+
+    a:focus, a:hover {
+      border-bottom:none;
     }
 
     li {
       list-style-type:none;
       text-transform:uppercase;
-      font-size:0.85em;
+      font-size:1em;
       font-family:'LFT Etica Semibold', Arial, sans-serif;
-      margin:0 0 0.5em 0;
+      margin:0 1em 0.5em 1em;
+      display:inline-block;
 
       a {
         color: $var-color-black;
         padding:0.15em 0.3em;
-        border-bottom:none;
       }
 
       a:focus, a:hover, a.nav-link-current { /* The .nav-link-current class identifies the active page, so that viewers can see which page they're on by looking at the navigation bar */
         color: $var-color-yellow;
         background-color: $var-color-red;
-        border-bottom:none;
       }
 
       a.nav-link-current {
@@ -136,8 +133,8 @@ nav {
     }
 
     img { /* The logo image in the nav bar */
-      float:left;
-      margin:0;
+      margin:auto;
+      display:block;
       opacity:1;
       @include transition(opacity 0.3s ease-out);
     }
@@ -185,7 +182,7 @@ h1 {
 
 h2 {
   font-family: 'LFT Etica Semibold', Arial, sans-serif;
-  font-size:0.9em;
+  font-size:1.2em;
   margin-top: 0;
   margin-bottom: 0.5em;
   color:$var-color-black;
@@ -209,12 +206,12 @@ h4 {
 /* Paragraphs */
 p, ul, ol {
   margin:0 0 1em 0;
-  font-size:0.5em;
+  font-size:0.8em;
   line-height:1.5em;
 }
 
-p.strong {
-  font-family:'LFT Etica Bold', Arial, sans-serif;
+p strong {
+  font-family:'LFT Etica Semibold', Arial, sans-serif;
 }
 
 /* TEXT ELEMENTS */
@@ -258,6 +255,7 @@ p.strong {
 /* Styling for the link */
 a {
   color:$var-color-red;
+  font-family:'LFT Etica Semibold', Arial, sans-serif;
   border-bottom:0.15em solid rgba(153, 43, 31, 0);
   text-decoration:none;
   @include transition(all 0.3s ease-out);
@@ -275,12 +273,102 @@ a {
 
 
 
+
+
+
 /* SECTIONS */
 
 footer {
   background-color: $var-color-dark-yellow;
   font-family: 'LFT Etica', Arial, sans-serif;
+  padding-top:0.5em;
+  margin-top:5em;
+
+  a {
+    color:$var-color-black;
+    border-bottom: 0.15em solid rgba(0,0,0,0);
+
+    &:hover, &:focus {
+      color:$var-color-black;
+      border-bottom: 0.15em solid rgba(0,0,0,1);
+    }
+
+  }
+
 }
+
+.recent-games {
+  border-top: 0.1em solid $var-color-dark-yellow;
+  padding-top:5em;
+
+  .container {
+    margin-bottom:1.5em;
+  }
+}
+
+/* SECTIONS */
+
+
+
+
+
+/* GAMES */
+
+.game-preview { /* The boxes on the homepage that link to the projects */
+  padding:0.3em 0;
+  text-align:left;
+  opacity:1;
+  position:relative;
+
+    img {
+      display:block;
+      @include transition(all 0.3s ease-out);
+    }
+
+    &:hover img, &:focus img {
+      opacity: 0.9;
+      @include transition(all 0.3s ease-out);
+    }
+
+    .game-info { /* The textbox inside the project-preview box that contains the project's information */
+      position:absolute;
+      background-color: rgba(0, 0, 0, 1);
+      height:3em;
+      left:0;
+      right:0;
+      bottom:0;
+      @include transition(all 0.3s ease-out);
+    }
+
+    &:hover .game-info, &:focus .game-info { /* Cause the project-info box to expand when the project-preview box is hovered over */
+      background-color: rgba(0, 0, 0, 0.65);
+      @include transition(all 0.3s ease-out);
+    }
+
+    .game-name { /* The name of the project */
+      font-family:'LFT Etica Bold', Arial, sans-serif;
+      font-size:1em;
+      margin:0.65em 0 0 0.75em;
+      line-height:1;
+      color:$var-color-yellow;
+      @include transition(all 0.3s ease-out);
+    }
+
+    .game-price { /* The domain of the project (e.g. graphic design, UX design, etc.) */
+      font-family:'LFT Etica Light Italic', Arial, sans-serif;
+      font-size:0.8em;
+      margin:0 0 0 0.75em;
+      padding-bottom:2em;
+      line-height:1;
+      color:$var-color-yellow;
+    }
+
+    &:hover .game-name, &:focus .game-name { /* Text needs to also move when the box expands */
+      @include transition(all 0.3s ease-out);
+    }
+
+}
+
 
 
 
@@ -290,6 +378,10 @@ footer {
 
 .container {
 
+  &.separator {
+    padding-bottom:3.5em;
+  }
+
   &::after { /* Clears the floats after a grid row */
     content: "";
     display: table;
@@ -298,7 +390,12 @@ footer {
 }
 
 [class*='col-'] { /* By default (mobile-first) columns are stacked */
-  margin:0.5em 0;
+  margin:1em 0;
+  width:100%;
+}
+
+nav [class*='col-'] {
+  margin:0;
   width:100%;
 }
 
@@ -320,7 +417,7 @@ footer {
   }
 
   h2 {
-    font-size:1.75em;
+    font-size:1.25em;
   }
 
   h3 {
@@ -336,17 +433,8 @@ footer {
     font-size:1em;
   }
 
-  .project-image p {
-    font-size:0.8em;
-  }
-
   nav ul li {
-    display:inline-block;
-    margin-left:1.5em;
-  }
-
-  .section-style-guide section, .section-project-details section:not(:last-of-type) {
-    padding-bottom:3.5em;
+    margin-right:0;
   }
 
   header {
@@ -354,15 +442,25 @@ footer {
   }
 
   footer {
-    margin-top:3.5em;
-  }
-
-  .img-profile {
-    padding:0 4.5em;
+    padding-top:0.25em;
   }
 
   footer p {
     font-size:0.8em;
+  }
+
+  nav {
+    position:relative;
+
+    img {
+      float:left;
+    }
+  }
+
+  nav ul {
+    position:absolute;
+    bottom:0;
+    right:0;
   }
 
 }
@@ -374,26 +472,13 @@ footer {
 
 @media (min-width:40em) { /* Media queries which take place once the screen is 40em or larger */
 
-  blockquote {
-    font-size: 1.5em;
-    padding: 0.25em 3em;
-  }
-
-  blockquote:before {
-    font-size: 4em;
-  }
-
-  cite {
-    font-size:0.65em;
-  }
-
   .container { /* Regular grids used for layout */
-    margin-left:-0.5em;
-    margin-right:-0.5em;
+    margin-left:-1em;
+    margin-right:-1em;
   }
 
   [class*='col-'] { /* Remove outside margins */
-    padding:0 0.5em;
+    padding:0 1em;
     float:left;
   }
 
@@ -401,29 +486,26 @@ footer {
     width:50%;
   }
 
+  .col-full {
+    width:100%;
+  }
+
   .mobile-switch {
     float:right;
     text-align:right;
   }
 
-  .project-preview .project-info {
-    left:0.5em;
-    right:0.5em;
+  .separator {
+    margin-bottom: 5em;
   }
 
   .contact-list-footer {
     text-align:right;
+  }
 
-    a {
-      color:$var-color-black;
-      border-bottom: 0.15em solid rgba(0,0,0,0);
-
-      &:hover, &:focus {
-        border-bottom: 0.15em solid rgba(0,0,0,1);
-      }
-
-    }
-
+  .game-preview .game-info {
+    left:1em;
+    right:1em;
   }
 
 }
@@ -438,6 +520,10 @@ footer {
   h1 {
     font-size:2.5em;
     line-height:1em;
+  }
+
+  h2 {
+    font-size:1.6em;
   }
 
   .col-1of3 {
@@ -460,34 +546,6 @@ footer {
     width:50%;
   }
 
-  .section-style-guide section, .section-project-details section:not(:last-of-type) {
-    padding-bottom:5em;
-  }
-
-  section.section-contact, footer {
-    margin-top:5em;
-  }
-
-  .img-profile {
-    padding:0;
-  }
-
-  h3 {
-    margin-top:0;
-  }
-
-}
-
-
-
-
-
-
-@media (min-width:60em) { /* Media queries which take place once the screen is 60em or larger */
-  .colour-block {
-    width:20%;
-    float:left;
-  }
 }
 
 /* MEDIA QUERIES */
