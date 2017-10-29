@@ -61,6 +61,10 @@ img { /* All images should be at max width and shrink down if larger than the sc
   height:auto;
 }
 
+hr {
+  border:0.05em solid $var-color-dark-yellow;
+}
+
 /* Selection - make the highlighted text yellow and the background red */
 
 ::-moz-selection { /* Code for Firefox */
@@ -94,6 +98,7 @@ figure { /* By default, remove margins on figures */
 nav {
   padding:1em 0;
   border-bottom: 0.1em solid $var-color-black;
+  margin-bottom:2em;
 
     ul { /* The ul houses the Home, Games, and About links */
       margin:0;
@@ -183,23 +188,26 @@ h1 {
 h2 {
   font-family: 'LFT Etica Semibold', Arial, sans-serif;
   font-size:1.2em;
-  margin-top: 0;
+  margin-top: 2em;
   margin-bottom: 0.5em;
   color:$var-color-black;
 }
 
 h3 {
-  font-family: 'LFT Etica Semibold', Arial, sans-serif;
+  text-transform:uppercase;
+  font-family: 'LFT Etica Bold', Arial, sans-serif;
   font-size:0.9em;
-  margin-bottom: 0;
+  margin-top:2.5em;
+  margin-bottom:0;
   color:$var-color-black;
 }
 
 h4 {
   text-transform:uppercase;
   font-size:0.8em;
-  font-family: 'LFT Etica Semibold', Arial, sans-serif;
-  margin-bottom: 0;
+  margin-top:0;
+  margin-bottom:1em;
+  font-family: 'LFT Etica Light Italic', Arial, sans-serif;
   color:$var-color-black;
 }
 
@@ -232,24 +240,26 @@ p strong {
 /* INTERACTIVE ELEMENTS */
 
 /* Styling for the buttons */
-.button {
+.button, #contact-form button[type="submit"] {
   margin:0 auto;
-  width:7.5;
-  padding: 0.5em 0.75em;
+  width:100%;
+  padding: 0.75em 0.75em;
   color: $var-color-yellow;
   background-color: $var-color-red;
   text-decoration: none;
   text-transform:uppercase;
   font-family:'LFT Etica Bold', Arial, sans-serif;
-  border-bottom:none;
+  border:none;
   @include transition(all 0.1s ease-out);
+  display:block;
+  text-align:center;
+  font-size:0.75em;
 
     &:hover, &:focus {
       background-color: $var-color-dark-yellow;
       color:$var-color-yellow;
-      border-bottom:none;
+      border:none;
     }
-
 }
 
 /* Styling for the link */
@@ -299,14 +309,29 @@ footer {
 
 .recent-games {
   border-top: 0.1em solid $var-color-dark-yellow;
-  padding-top:5em;
 
   .container {
     margin-bottom:1.5em;
   }
 }
 
+.purchase-options {
+
+  h3, h4 {
+    text-align:center;
+  }
+
+  .button {
+    margin-bottom:2em;
+  }
+}
+
 /* SECTIONS */
+
+
+
+
+
 
 
 
@@ -367,7 +392,99 @@ footer {
       @include transition(all 0.3s ease-out);
     }
 
+    .game-details {
+      position:absolute;
+      right:0.75em;
+      bottom:0.8em;
+      text-align:right;
+      font-family:'LFT Etica', Arial, sans-serif;
+      color:$var-color-yellow;
+
+      span {
+        vertical-align:middle;
+      }
+
+      img {
+        display:inline-block;
+        vertical-align:middle;
+        padding-right:0.15em;
+      }
+    }
 }
+
+aside {
+  background-color:$var-color-black;
+  color:$var-color-yellow;
+  padding:0.5em;
+
+  #game-title, #game-players, #game-time, #game-ages {
+    font-size:0.85em;
+    text-align:center;
+    display:block;
+    padding:0.5em 0;
+
+    strong {
+      font-family:'LFT Etica Bold', Arial, sans-serif;
+    }
+
+    span {
+      vertical-align:middle;
+    }
+
+    img {
+      display:inline-block;
+      vertical-align:middle;
+      padding-right:0.15em;
+    }
+  }
+}
+
+.banner-image {
+  border-top:1em solid $var-color-dark-yellow;
+  border-bottom:1em solid $var-color-dark-yellow;
+  padding:0;
+  margin:2em 0;
+  display:block;
+}
+
+/* GAMES */
+
+
+
+
+
+
+
+
+
+
+/* FORMS */
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width:100%;
+  border:0.1em solid $var-color-black;
+  background:$var-color-yellow;
+  margin:0 0 1em 0;
+  padding:0.15em;
+  font-size:0.85em;
+}
+
+#contact-form textarea {
+  max-width:100%;
+}
+
+#contact-form span {
+  font-family: 'LFT Etica Semibold', Arial, sans-serif;
+  font-size:0.85em;
+}
+
+/* FORMS */
+
+
+
+
 
 
 
@@ -408,7 +525,30 @@ nav [class*='col-'] {
 
 
 
+
 /* MEDIA QUERIES */
+
+
+/* Header images for games */
+@media (max-width:34.999em) {
+  #banner-small { display:block; }
+  #banner-medium { display:none; }
+  #banner-large { display:none; }
+}
+
+@media (min-width:35em) and (max-width:56.249em) {
+  #banner-small { display:none; }
+  #banner-medium { display:block; }
+  #banner-large { display:none; }
+}
+
+@media (min-width:56.25em) {
+  #banner-small { display:none; }
+  #banner-medium { display:none; }
+  #banner-large { display:block; }
+}
+
+
 
 @media (min-width:35em) { /* Media queries which take place once the screen is 35em or larger */
 
@@ -463,6 +603,10 @@ nav [class*='col-'] {
     right:0;
   }
 
+  .button, #contact-form button[type="submit"] {
+    width:7.5em;
+    display:inline;
+  }
 }
 
 
@@ -484,10 +628,6 @@ nav [class*='col-'] {
 
   .col-1of2-sm {
     width:50%;
-  }
-
-  .col-full {
-    width:100%;
   }
 
   .mobile-switch {
@@ -545,7 +685,6 @@ nav [class*='col-'] {
   .col-1of2 {
     width:50%;
   }
-
 }
 
 /* MEDIA QUERIES */
