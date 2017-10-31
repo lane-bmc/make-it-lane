@@ -188,9 +188,13 @@ h1 {
 h2 {
   font-family: 'LFT Etica Semibold', Arial, sans-serif;
   font-size:1.2em;
-  margin-top: 2em;
+  margin-top:0;
   margin-bottom: 0.5em;
   color:$var-color-black;
+}
+
+.recent-games h2 {
+  margin-top: 2em;
 }
 
 h3 {
@@ -312,6 +316,16 @@ footer {
 
   .container {
     margin-bottom:1.5em;
+  }
+}
+
+#about {
+  h2 {
+    margin-top:2em;
+  }
+
+  h2:first-of-type {
+    margin-top:0;
   }
 }
 
@@ -496,7 +510,7 @@ aside {
 .container {
 
   &.separator {
-    padding-bottom:3.5em;
+    padding-bottom:2.8em;
   }
 
   &::after { /* Clears the floats after a grid row */
@@ -550,7 +564,7 @@ nav [class*='col-'] {
 
 
 
-@media (min-width:35em) { /* Media queries which take place once the screen is 35em or larger */
+@media (min-width:37.5em) { /* Media queries which take place once the screen is 35em or larger */
 
   h1 {
     font-size:1.5em;
@@ -560,17 +574,23 @@ nav [class*='col-'] {
     font-size:1.25em;
   }
 
-  h3 {
-    font-size:1.1em;
-    margin-bottom:0.3em;
-  }
+  .purchase-options {
 
-  h4 {
-    font-size:0.9em;
-  }
+    h3 {
+      font-size:1.1em;
+    }
 
-  p, ul, ol {
-    font-size:1em;
+    h4 {
+      font-size:0.9em;
+    }
+
+    .button {
+      display:block;
+      font-size:0.85em;
+      width:20em;
+      margin-left:auto;
+      margin-right:auto;
+    }
   }
 
   nav ul li {
@@ -578,7 +598,7 @@ nav [class*='col-'] {
   }
 
   header {
-    padding-bottom:1.5em;
+    padding-bottom:0.5em;
   }
 
   footer {
@@ -604,17 +624,44 @@ nav [class*='col-'] {
   }
 
   .button, #contact-form button[type="submit"] {
-    width:7.5em;
-    display:inline;
+    display:block;
+    font-size:0.85em;
+    width:20em;
+    margin-left:0;
   }
 }
 
 
 
+@media (min-width:43.5em) {
+  p, ul, ol,
+  #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea,
+  #contact-form span {
+    font-size:0.9em;
+  }
+
+  h1 {
+    font-size: 1.75em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+}
 
 
 
-@media (min-width:40em) { /* Media queries which take place once the screen is 40em or larger */
+@media (min-width:50em) { /* Media queries which take place once the screen is 40em or larger */
+
+  p, ul, ol,
+  #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea,
+  #contact-form span {
+    font-size:1em;
+  }
 
   .container { /* Regular grids used for layout */
     margin-left:-1em;
@@ -630,8 +677,69 @@ nav [class*='col-'] {
     width:50%;
   }
 
+  .col-1of3-sm {
+    width:33.33%;
+  }
+
+  .col-2of3-sm {
+    width:66.66%;
+  }
+
   .mobile-switch {
     float:right;
+  }
+
+  .contact-list-footer {
+    text-align:right;
+  }
+
+  .game-preview {
+    .game-info {
+      left:1em;
+      right:1em;
+    }
+
+    .game-details {
+      position:absolute;
+      right:1.75em;
+      bottom:0.8em;
+    }
+  }
+
+  .purchase-options {
+    h3, h4 {
+      text-align:left;
+      margin-top:0;
+    }
+
+    .button {
+      width:10em;
+      margin:0 0 1.25em 0;
+    }
+  }
+
+  .button, #contact-form button[type="submit"] {
+    width:13.5em;
+  }
+}
+
+
+
+
+@media (min-width:56.25em) { /* Media queries which take place once the screen is 56.25em or larger */
+  
+  h1 {
+    font-size:2em;
+  }
+}
+
+@media (min-width:65em) { /* Media queries which take place once the screen is 56.25em or larger */
+
+  h2 {
+    font-size:1.6em;
+  }
+
+  .mobile-switch {
     text-align:right;
   }
 
@@ -639,31 +747,33 @@ nav [class*='col-'] {
     margin-bottom: 5em;
   }
 
-  .contact-list-footer {
-    text-align:right;
-  }
+  aside {
 
-  .game-preview .game-info {
-    left:1em;
-    right:1em;
-  }
+    #game-title {
+      vertical-align:middle;
+      margin-left:0.5em;
+    }
 
-}
+    #game-title, #game-players, #game-time, #game-ages {
+      text-align:left;
+      display:inline-block;
+      padding:0.5em 0;
+      margin-right:1.25em;
 
+      strong {
+        font-family:'LFT Etica Bold', Arial, sans-serif;
+      }
 
+      span {
+        vertical-align:middle;
+      }
 
-
-
-
-@media (min-width:56.25em) { /* Media queries which take place once the screen is 56.25em or larger */
-
-  h1 {
-    font-size:2.5em;
-    line-height:1em;
-  }
-
-  h2 {
-    font-size:1.6em;
+      img {
+        display:inline-block;
+        vertical-align:middle;
+        padding-right:0.15em;
+      }
+    }
   }
 
   .col-1of3 {
@@ -674,16 +784,27 @@ nav [class*='col-'] {
     width:66.66%;
   }
 
-  .col-1of4 {
-    width:25%;
-  }
-
-  .col-3of4 {
-    width:75%;
-  }
-
   .col-1of2 {
     width:50%;
+  }
+
+  .col-1of1 {
+    width:100%;
+  }
+
+  .button, #contact-form button[type="submit"] {
+    font-size:1em;
+  }
+}
+
+
+
+
+
+@media (min-width:80em) {
+  h1 {
+    font-size:2.5em;
+    line-height:1em;
   }
 }
 
