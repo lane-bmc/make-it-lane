@@ -61,6 +61,28 @@ img { /* All images should be at max width and shrink down if larger than the sc
   height:auto;
 }
 
+#about-img {
+  #profile-normal {
+    display:block;
+    margin:auto;
+  }
+  
+  #profile-hover {
+    display:none;
+  }
+}
+
+#about-img:hover, #about-img:focus {
+  #profile-hover {
+    display:block;
+    margin:auto;
+  }
+  
+  #profile-normal {
+    display:none;
+  }
+}
+
 hr {
   border:0.05em solid $var-color-dark-yellow;
 }
@@ -365,7 +387,7 @@ footer {
     }
 
     &:hover img, &:focus img {
-      opacity: 0.9;
+      opacity: 0.8;
       @include transition(all 0.3s ease-out);
     }
 
@@ -379,7 +401,7 @@ footer {
       @include transition(all 0.3s ease-out);
     }
 
-    &:hover .game-info, &:focus .game-info { /* Cause the project-info box to expand when the project-preview box is hovered over */
+    &:hover .game-info, &:focus .game-info {
       background-color: rgba(0, 0, 0, 0.65);
       @include transition(all 0.3s ease-out);
     }
@@ -510,7 +532,7 @@ aside {
 .container {
 
   &.separator {
-    padding-bottom:2.8em;
+    padding-bottom:4.5em;
   }
 
   &::after { /* Clears the floats after a grid row */
